@@ -26,7 +26,6 @@
   <link rel="stylesheet" href="<?php echo base_url("public/styles/urban.css"); ?>">
   <link rel="stylesheet" href="<?php echo base_url("public/styles/urban.skins.css"); ?>">
   <!-- endbuild -->
-
 </head>
 <body>
 
@@ -124,6 +123,7 @@
               <span class="pull-left">Samuel Perkins</span>
             </a>
             <ul class="dropdown-menu">
+
               <li>
                 <a href="javascript:;">Ayuda</a>
               </li>
