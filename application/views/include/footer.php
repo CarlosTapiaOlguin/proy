@@ -56,6 +56,7 @@
   <!-- endbuild -->
 
   <!-- page level scripts -->
+  <script src="<?php echo base_url("public/vendor/sweetalert/lib/sweet-alert.min.js"); ?>"></script>
   <script src="<?php echo base_url("public/vendor/d3/d3.min.js"); ?>"></script>
   <script src="<?php echo base_url("public/vendor/flot/jquery.flot.js"); ?>"></script>
   <script src="<?php echo base_url("public/vendor/flot/jquery.flot.resize.js"); ?>"></script>

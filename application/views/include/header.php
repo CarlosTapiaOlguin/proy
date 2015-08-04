@@ -140,6 +140,27 @@
       </header>
       <!-- /top header -->
 
+      <div class="sweet-alert showSweetAlert visible" tabindex="-1" data-custom-class="" data-has-cancel-button="true" data-has-confirm-button="true" data-allow-ouside-click="false" data-has-done-function="true" data-animation="pop" data-timer="null" style="display: block; margin-top: -173px;">
+        <div class="sa-icon sa-error" style="display: none;">
+          <span class="sa-x-mark">
+            <span class="sa-line sa-left"></span>
+            <span class="sa-line sa-right"></span>
+          </span>
+        </div>
+      <div class="sa-icon sa-warning pulseWarning" style="display: block;"> 
+        <span class="sa-body pulseWarningIns"></span> 
+        <span class="sa-dot pulseWarningIns"></span> 
+      </div> 
+      <div class="sa-icon sa-info" style="display: none;"></div> 
+      <div class="sa-icon sa-success" style="display: none;">
+        <span class="sa-line sa-tip"></span> 
+        <span class="sa-line sa-long"></span> 
+        <div class="sa-placeholder"></div> 
+        <div class="sa-fix"></div> 
+      </div> 
+      <div class="sa-icon sa-custom" style="display: none;">
+      </div> <h2>Are you sure?</h2><p style="display: block;">You will not be able to recover this imaginary file!</p><button class="cancel" tabindex="2" style="display: inline-block; box-shadow: none;">Cancel</button><button class="confirm" tabindex="1" style="display: inline-block; box-shadow: rgba(221, 107, 85, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.0470588) 0px 0px 0px 1px inset; background-color: rgb(221, 107, 85);">Yes, delete it!</button></div>
+
       <!-- main area -->
       <div class="main-content">
        
