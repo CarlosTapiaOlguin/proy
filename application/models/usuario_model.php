@@ -6,11 +6,10 @@ class Usuario_model extends CI_Model{
     $this->load->database(); 
   }
 
-  function ValidarUsuario($email,$password){         //   Consulta Mysql para buscar en la tabla Usuario aquellos usuarios que coincidan con el mail y password ingresados en pantalla de login
-      $query = $this->db->where('correo',$email);   //   La consulta se efectúa mediante Active Record. Una manera alternativa, y en lenguaje más sencillo, de generar las consultas Sql.
-      $query = $this->db->where('pass',$password);
+  function ValidarUsuario($email,$password){ 
+      $this->db->where(array('pass'=> $this->cryptPass($password),'correo' => $email));  
       $query = $this->db->get('usuarios');
-      return $query->row();    //   Devolvemos al controlador la fila que coincide con la búsqueda. (FALSE en caso que no existir coincidencias)
+      return $query->row();
    }
 
    function nuevoUsuario($email,$password)
@@ -21,5 +20,14 @@ class Usuario_model extends CI_Model{
         );
         return $this->db->insert('usuarios', $data);  
     }
+
+
+    public function cryptPass($pass){	
+		$newPass= sha1(md5(crypt(trim($pass), "_IW2013")));
+		$newPass= strrev($newPass);
+		$newPass= substr($newPass, 20, 20).substr($newPass, 0, 20);
+		
+		return $newPass;
+	}
 
 }

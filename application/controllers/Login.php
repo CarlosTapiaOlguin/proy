@@ -7,7 +7,7 @@ class Login extends CI_Controller {
          $data['error']="El campo correo es obligatorio";
          $this->index($data);
       }else{                    
-         $this->form_validation->set_rules('correo','e-mail','required|valid_correo|trim|xss_clean');      
+         $this->form_validation->set_rules('correo','e-mail','required|valid_email|trim|xss_clean');      
          $this->form_validation->set_rules('password','password','required|trim|xss_clean');
          if(($this->form_validation->run()==FALSE)){ 
             $this->index();
@@ -15,7 +15,7 @@ class Login extends CI_Controller {
             $this->load->model('usuario_model');
             $ExisteUsuarioyPassoword=$this->usuario_model->ValidarUsuario($_POST['correo'],$_POST['password']);  
             if($ExisteUsuarioyPassoword){  
-               echo "Validacion Ok";
+               echo var_dump($ExisteUsuarioyPassoword);
                exit;   
             }else{ 
                $data['error']="Correo o password incorrecta, por favor vuelva a intentar";
