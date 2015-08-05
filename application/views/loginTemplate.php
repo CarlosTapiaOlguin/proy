@@ -41,8 +41,9 @@
                 </div>
                 <p class="text-center mb30">Bienvenido, Ingrese a su cuenta.</p>
                 <div class="form-inputs">
-                  <input name="correo" type="email" value="<?= set_value('correo'); ?>" class="form-control input-lg" placeholder="Correo">
+                  <input name="email" type="email" value="<?= set_value('email'); ?>" class="form-control input-lg" placeholder="Email">
                   <input name="password" type="password" class="form-control input-lg" placeholder="Contraseña">
+                  <input name="referer" type="text" class="hide">
                 </div>
                 
                 <button class="btn btn-primary btn-block btn-lg mb15" type="submit">
@@ -92,17 +93,15 @@
   <script src="<?php echo base_url("public/vendor/flot/jquery.flot.pie.js"); ?>"></script>
   <!-- /page level scripts -->
 
-  <?php if(!empty(form_error('correo'))){ ?>
-    <script type="text/javascript">
-      swal('Error!', '<?php echo form_error("correo"); ?>', 'warning');
-   </script> 
-  <?php }?>
+   <?php echo  validation_errors('<div class="hide" id="errores">','</div>'); ?>
+   <?php echo  '<div class="hide" id="errores">'.$error.'</div>'; ?>
 
-  <?php if(!empty($error)){ ?>
     <script type="text/javascript">
-      swal('Error!', '<?php echo $error; ?>', 'warning');
-   </script> 
-  <?php }?>
+      var mensaje = $("#errores").text();
+      if(mensaje!=""){
+        swal('Error!', mensaje , 'warning');
+      }
+    </script> 
        
 
 

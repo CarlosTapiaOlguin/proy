@@ -1,24 +1,32 @@
 <?php
 class Login extends CI_Controller {
 
-   function ingresar(){
+   function __construct(){
+      parent::__construct();
+      $this->load->model('usuario_model');
+      $this->load->library('form_validation');
+   }
 
-      if(!isset($_POST['correo'])){
-         $data['error']="El campo correo es obligatorio";
-         $this->index($data);
+   function ingresar(){
+      if(!isset($_POST['email'])){
+         $this->index();
       }else{                    
-         $this->form_validation->set_rules('correo','e-mail','required|valid_email|trim|xss_clean');      
-         $this->form_validation->set_rules('password','password','required|trim|xss_clean');
+         $this->form_validation->set_rules('email','e-mail','required|valid_email|trim|xss_clean');      
+         $this->form_validation->set_rules('password','password','required|trim|xss_clean|sha1');
          if(($this->form_validation->run()==FALSE)){ 
             $this->index();
          }else{                                      
-            $this->load->model('usuario_model');
-            $ExisteUsuarioyPassoword=$this->usuario_model->ValidarUsuario($_POST['correo'],$_POST['password']);  
-            if($ExisteUsuarioyPassoword){  
-               echo var_dump($ExisteUsuarioyPassoword);
-               exit;   
+            $datosUsuario =$this->usuario_model->ValidarUsuario($_POST['email'],$_POST['password']);  
+            if($datosUsuario){  
+               $this->session->set_userdata((array)$datosUsuario);
+               if(empty($_POST['referer'])){
+                  redirect(base_url('home'), 'refresh'); 
+               }else{
+                  redirect($_POST['referer'], 'refresh');
+               } 
+               
             }else{ 
-               $data['error']="Correo o password incorrecta, por favor vuelva a intentar";
+               $data['error']="email o password incorrecta, por favor vuelva a intentar";
                $this->index($data);
             }
          }
@@ -71,6 +79,10 @@ class Login extends CI_Controller {
 
    function index($data=null){
       $this->load->view('loginTemplate',$data);
+   }
+
+   function salir(){
+      $this->session->sess_destroy();
    }
 }
 ?>

@@ -3,6 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends CI_Controller {
 
+	function __construct(){
+      parent::__construct();
+      $this->load->library('session');
+   }
+
+
 	public function index()
 	{
 		$this->load->view('include/header');
@@ -13,7 +19,6 @@ class Home extends CI_Controller {
 
 		$this->load->model('producto_model');
 		$this->load->view('home');
-		
 		$this->load->view('include/footer');
 	}
 }
