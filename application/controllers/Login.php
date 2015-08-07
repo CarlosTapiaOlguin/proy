@@ -13,12 +13,13 @@ class Login extends CI_Controller {
          $this->index();
       }else{                    
          $this->form_validation->set_rules('email','e-mail','required|valid_email|trim|xss_clean');      
-         $this->form_validation->set_rules('password','password','required|trim|xss_clean|sha1');
+         $this->form_validation->set_rules('pass','password','required|trim|xss_clean|sha1');
          if(($this->form_validation->run()==FALSE)){ 
             $this->index();
          }else{                                      
-            $datosUsuario =$this->usuario_model->ValidarUsuario($this->input->post('email'),$this->input->post('password'));  
+            $datosUsuario =$this->usuario_model->ValidarUsuario($this->input->post('email'),$this->input->post('pass'));  
             if($datosUsuario){  
+               $this->usuario_model->updateUltimoInicioSession($this->input->post('email'));
                $this->session->set_userdata((array)$datosUsuario);
                $this->retornar();
             }else{ 
@@ -51,6 +52,7 @@ class Login extends CI_Controller {
                                                 $this->input->post('email'),
                                                 $this->input->post('pass'),
                                                 $this->input->post('region'));
+               //$this->enviarEmailActivacion();
             }else{
                $data['error']="El email ingresado ya existe.";
                $this->paginaRegistro($data);
@@ -81,6 +83,33 @@ class Login extends CI_Controller {
    function salir(){
       $this->session->sess_destroy();
       $this->retornar();
+   }
+
+
+
+   function enviarEmailActivacion(){
+      $data['url'] = "asdasd";
+      $data['usuario'] = "asdasd";
+      $data['codigo'] = "asdasd";
+
+      $this->load->library('email');
+      $this->email
+          ->from('info@locambio.cl', 'Example Inc')
+          ->to('carlostapiaolguin1@seidor.cl')
+          ->subject('Hello from Example Inc.')
+          ->message("hola");//$this->load->view('mails/activacionTemplate', $data, true))
+          //->set_mailtype('html');
+      
+      if($this->email->send()){
+         var_dump($this->email->print_debugger());
+         echo "enviado";
+      }else{
+         var_dump($this->email->print_debugger());
+         echo "error";  
+      }
+
+      
+      exit;
    }
 }
 ?>

@@ -14,7 +14,7 @@ class Home extends CI_Controller {
 		$this->load->view('include/headerTemplate');
 		$this->getCategorias();
 		$this->load->model('producto_model');
-		$this->load->view('home');
+		$this->load->view('homeTemplate');
 		$this->load->view('include/footerTemplate');
 	}
 

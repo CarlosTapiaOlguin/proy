@@ -34,7 +34,7 @@ class Usuario_model extends CI_Model{
             'email' => $email,
             'pass' => $pass,
             'region' => $region,
-            'user'=>$existeUsername
+            'user'=>$username
       );
       return $this->db->insert('usuarios', $data);  
     }
@@ -53,8 +53,13 @@ class Usuario_model extends CI_Model{
       return $query->row(); 
     }
 
-    function updateUltimoInicioSession($Correo){
-
+    function updateUltimoInicioSession($email){
+      $fecha = date('Y-m-d H:i:s');
+      $data = array(
+               'ult_inic' => $fecha
+            );  
+      $this->db->where('email', $email);
+      $this->db->update('usuarios', $data); 
     }
 
 

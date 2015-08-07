@@ -42,7 +42,7 @@
                 <p class="text-center mb30">Bienvenido, Ingrese a su cuenta.</p>
                 <div class="form-inputs">
                   <input name="email" type="email" value="<?= set_value('email'); ?>" class="form-control input-lg" placeholder="Email">
-                  <input name="password" type="password" class="form-control input-lg" placeholder="Contraseña">
+                  <input name="pass" type="password" class="form-control input-lg" placeholder="Contraseña">
                   <input name="referer" type="text" class="hide">
                 </div>
                 
@@ -51,7 +51,8 @@
                 </button>
                 <p>
                   <a href="extras-signup.html">Crear una cuenta</a> ·
-                  <a href="extras-forgot.html">Recuperar contraseña?</a>
+                  <a href="extras-forgot.html">Recuperar contraseña?</a> · 
+                  <a href="<?= base_url('login/registro');?>">Registrate</a>
                 </p>
               <?php echo form_close(); ?>
             </div>
