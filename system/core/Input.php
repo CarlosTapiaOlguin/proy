@@ -799,27 +799,19 @@ class CI_Input {
 	 */
 	public function get_request_header($index, $xss_clean = FALSE)
 	{
-		static $headers;
-
-		if ( ! isset($headers))
+		if (empty($this->headers))
 		{
-			empty($this->headers) OR $this->request_headers();
-			foreach ($this->headers as $key => $value)
-			{
-				$headers[strtolower($key)] = $value;
-			}
+			$this->request_headers();
 		}
 
-		$index = strtolower($index);
-
-		if ( ! isset($headers[$index]))
+		if ( ! isset($this->headers[$index]))
 		{
 			return NULL;
 		}
 
 		return ($xss_clean === TRUE)
-			? $this->security->xss_clean($headers[$index])
-			: $headers[$index];
+			? $this->security->xss_clean($this->headers[$index])
+			: $this->headers[$index];
 	}
 
 	// --------------------------------------------------------------------

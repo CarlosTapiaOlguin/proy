@@ -1,24 +1,26 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-
 class Home extends CI_Controller {
 
 	function __construct(){
       parent::__construct();
-      $this->load->library('session');
+      $this->load->model('usuario_model');
    }
 
 
-	public function index()
-	{
-		$this->load->view('include/header');
-		
-		require_once('Categorias.php');
-		$cat = new Categorias();
-		$cat->getCategorias();
 
+	function index()
+	{
+
+		$this->load->view('include/headerTemplate');
+		$this->getCategorias();
 		$this->load->model('producto_model');
 		$this->load->view('home');
-		$this->load->view('include/footer');
+		$this->load->view('include/footerTemplate');
+	}
+
+	public function getCategorias(){
+		$this->load->model('categoria_model');
+		$this->load->model('region_model');
+		$this->load->view('categoriasTemplate');
 	}
 }

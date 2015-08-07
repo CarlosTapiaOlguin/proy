@@ -1218,7 +1218,7 @@ abstract class CI_DB_driver {
 	/**
 	 * Fetch Field Names
 	 *
-	 * @param	string	$table	Table name
+	 * @param	string	the table name
 	 * @return	array
 	 */
 	public function list_fields($table)
@@ -1751,7 +1751,7 @@ abstract class CI_DB_driver {
 		//
 		// Added exception for single quotes as well, we don't want to alter
 		// literal strings. -- Narf
-		if (strcspn($item, "()'") !== strlen($item))
+		if (strpos($item, '(') !== FALSE OR strpos($item, "'") !== FALSE)
 		{
 			return $item;
 		}

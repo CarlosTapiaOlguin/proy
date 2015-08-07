@@ -94,7 +94,7 @@
   <!-- /page level scripts -->
 
    <?php echo  validation_errors('<div class="hide" id="errores">','</div>'); ?>
-   <?php echo  '<div class="hide" id="errores">'.$error.'</div>'; ?>
+   <?php   if(isset($error)) { echo '<div class="hide" id="errores">'.$error.'</div>';}  ?>
 
     <script type="text/javascript">
       var mensaje = $("#errores").text();
