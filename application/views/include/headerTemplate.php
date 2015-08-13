@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title></title>
+  <title>LoCambio Chile - Donde cambiar y vender es fácil.</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width">
   <link rel="shortcut icon" href="<?php echo base_url("public/images/favicon.png"); ?>">
@@ -43,7 +43,9 @@
         <ul class="nav navbar-nav navbar-left">
       
           <div class="brand-logo">
-            <img src="<?php echo base_url("public/images/sublogo.png"); ?>" height="60" alt="">
+            <a href="<?=  base_url("home") ?>">
+              <img src="<?=  base_url("public/images/sublogo.png") ?>" height="60" alt="">
+            </a>
           </div>
         
 

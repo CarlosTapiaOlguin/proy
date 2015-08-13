@@ -11,7 +11,7 @@
   </button>
   <ul class="dropdown-menu">
     <?php foreach ($this->region_model->getRegiones() as $reg) {
-      echo "<li><a href='javascript:;'>".$reg->nombre."</a></li>";
+      echo "<li><a href=''>".$reg->nombre."</a></li>";
     }?>
  
   </ul>
@@ -25,7 +25,7 @@
     </a>
   </li>
   <?php foreach ($this->categoria_model->getCategorias() as $cat) {
-    echo "<li><a href='javascript:;'>".$cat->categoria."</a></li>";
+    echo "<li><a href='".base_url('categoria/'.$cat->url_categoria)."'>".$cat->categoria."</a></li>";
   }?>
  
 </ul>

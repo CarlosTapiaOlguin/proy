@@ -5440,29 +5440,6 @@ a.text-muted:hover {
   margin-right: -15px;
   margin-left: -15px;
 }
-.gallery a {
-  display: block;
-  overflow: hidden;
-  margin-bottom: 15px;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
-}
-.gallery a img {
-  -webkit-transition: transform 300ms linear;
-  -moz-transition: transform 300ms linear;
-  -o-transition: transform 300ms linear;
-  transition: transform 300ms linear;
-  max-width: 100%;
-  height: auto;
-}
-.gallery a:hover img {
-  -webkit-transform: scale(1.2, 1.2);
-  -moz-transform: scale(1.2, 1.2);
-  -o-transform: scale(1.2, 1.2);
-  -ms-transform: scale(1.2, 1.2);
-  transform: scale(1.2, 1.2);
-}
 /* $invoice
  ------------------------------------------*/
 .invoice-logo {
@@ -12806,8 +12783,43 @@ td.align-middle {
   cursor: se-resize;
 }
 
-.tumb{
-  float:left;
-  height:150px;
-  overflow:hidden;
+.ficha-prod .caption p{
+  height: 25px;
+  overflow: hidden;
+
 }
+
+.tumb{
+  position: relative;
+  width: 300px;
+  height: 200px;
+  overflow: hidden;
+}
+
+.tumb img{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 100%;
+    width: auto;
+    z-index: 9;
+    transform: translate(-50%,-50%);
+}
+
+.tumb p{
+  background-color: #808080;
+  color: #FFFFFF;
+  z-index: 10;
+  position: absolute;
+  opacity: 0.6;
+}
+
+.tumb img:hover {
+    -webkit-animation: shake-little 0.2s ;
+}
+
+@-webkit-keyframes shake-little { 
+  0% { -webkit-transform: translate(-51%,-50%) rotate(0deg); }
+  50% { -webkit-transform: translate(-50%,-51%) rotate(0deg); }
+  100% { -webkit-transform: translate(-51%,-50%) rotate(0deg); }
+  }

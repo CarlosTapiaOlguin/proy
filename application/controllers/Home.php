@@ -10,7 +10,6 @@ class Home extends CI_Controller {
 
 	function index()
 	{
-
 		$this->load->view('include/headerTemplate');
 		$this->getCategorias();
 		$this->load->model('producto_model');
@@ -22,5 +21,11 @@ class Home extends CI_Controller {
 		$this->load->model('categoria_model');
 		$this->load->model('region_model');
 		$this->load->view('categoriasTemplate');
+	}
+
+	public function updateProductos(){
+		$this->load->model('producto_model');
+		$this->producto_model->modificarTituloProductos();
+		echo "ok";
 	}
 }
