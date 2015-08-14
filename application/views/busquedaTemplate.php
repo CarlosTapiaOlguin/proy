@@ -1,6 +1,6 @@
 <div class="col-sm-9">
   <div class="gallery">
-    <?php foreach($this->producto_model->getProductosCategoria($categoria , $pagina) as $prod) { ?>
+    <?php foreach($productos as $prod) { ?>
     <a href="<?= $prod->url_prod ?>">
     <div class="col-sm-4 col-lg-4 col-md-4 ficha-prod">
           <div class="thumbnail">
@@ -29,18 +29,24 @@
   </div>
   <ul class="pagination clearfix block">
   <?php 
+    if (!empty($categoria)) {
+      $metodo = 'categoria';
+    }else{
+      $metodo = 'buscar';
+    }
+
     if($pagina != "1"){
-      echo "<li><a href=".base_url("categoria/".$categoria."/".($pagina-1)).">←</a></li>";
+      echo "<li><a href=".base_url($metodo."/".$match."/".($pagina-1)).">←</a></li>";
     }
     for ($i=1; $i <= $totalPaginas; $i++) { 
       if($pagina == $i){
-        echo "<li class='active'><a  href=".base_url("categoria/".$categoria."/".($i)).">".$i."</a></li>";
+        echo "<li class='active'><a  href=".base_url($metodo."/".$match."/".($i)).">".$i."</a></li>";
       }else{
-        echo "<li><a href=".base_url("categoria/".$categoria."/".($i)).">".$i."</a></li>";
+        echo "<li><a href=".base_url($metodo."/".$match."/".($i)).">".$i."</a></li>";
       }
     }
     if($pagina != $totalPaginas){
-      echo "<li><a href=".base_url("categoria/".$categoria."/".($pagina+1)).">→</a></li>";
+      echo "<li><a href=".base_url($metodo."/".$match."/".($pagina+1)).">→</a></li>";
     }
     
   ?>

@@ -22,9 +22,24 @@ class Busqueda extends CI_Controller {
 
 		$this->load->view('include/headerTemplate');
 		$this->load->model('producto_model');
-		$data['categoria'] = $categoria;
+		$data['match'] = $categoria;
 		$data['pagina'] = $pagina;
+		$data['productos'] = $this->producto_model->getProductosCategoria($categoria , $pagina);
 		$data['totalPaginas'] = intval($this->producto_model->getProductosCategoriaCantidad($categoria)/48);
+		$this->getCategorias();
+		$this->load->view('busquedaTemplate',$data);
+		$this->load->view('include/footerTemplate');
+	}
+
+	public function busquedaPorTexto($busqueda , $pagina=1){
+
+		$busqueda = str_replace('-', ' ', $busqueda);
+		$this->load->view('include/headerTemplate');
+		$this->load->model('producto_model');
+		$data['pagina'] = $pagina;
+		$data['match'] = $busqueda;
+		$data['productos'] = $this->producto_model->getProductosBusqueda($busqueda , $pagina);
+		$data['totalPaginas'] = intval($this->producto_model->getProductosBusquedaCantidad($busqueda)/48);
 		$this->getCategorias();
 		$this->load->view('busquedaTemplate',$data);
 		$this->load->view('include/footerTemplate');

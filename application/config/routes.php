@@ -51,6 +51,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['categoria/(:any)/(:num)'] = 'busqueda/busquedaPorCategoria/$1/$2';
 $route['categoria/(:any)'] = 'busqueda/busquedaPorCategoria/$1';
+
+$route['buscar/(:any)/(:num)'] = 'busqueda/busquedaPorTexto/$1/$2';
+$route['buscar/(:any)'] = 'busqueda/busquedaPorTexto/$1';
+
 $route['default_controller'] = 'home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

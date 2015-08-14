@@ -12815,11 +12815,15 @@ td.align-middle {
 }
 
 .tumb img:hover {
-    -webkit-animation: shake-little 0.2s ;
+    -webkit-animation: shake-little 0.3s ;
 }
 
 @-webkit-keyframes shake-little { 
-  0% { -webkit-transform: translate(-51%,-50%) rotate(0deg); }
-  50% { -webkit-transform: translate(-50%,-51%) rotate(0deg); }
-  100% { -webkit-transform: translate(-51%,-50%) rotate(0deg); }
+  15% { -webkit-transform: translate(-51%,-50%) rotate(0deg); }
+  30% { -webkit-transform: translate(-50%,-51%) rotate(0deg); }
+  45% { -webkit-transform: translate(-51%,-50%) rotate(0deg); }
+  60% { -webkit-transform: translate(-51%,-50%) rotate(0deg); }
+  75% { -webkit-transform: translate(-50%,-51%) rotate(0deg); }
+  90% { -webkit-transform: translate(-51%,-50%) rotate(0deg); }
+  100% { -webkit-transform: translate(-50%,-50%) rotate(0deg); }
   }
