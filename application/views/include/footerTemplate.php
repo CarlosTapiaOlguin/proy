@@ -64,7 +64,7 @@
   <script src="<?php echo base_url("public/vendor/flot/jquery.flot.pie.js"); ?>"></script>
   <!-- /page level scripts -->
 
-
+  <script src="<?php echo base_url("public/scripts/general.js"); ?>"></script>
 
 </body>
 

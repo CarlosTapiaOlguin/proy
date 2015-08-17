@@ -25,6 +25,9 @@
   <link rel="stylesheet" href="<?php echo base_url("public/styles/animate.css"); ?>">
   <link rel="stylesheet" href="<?php echo base_url("public/styles/urban.css"); ?>">
   <link rel="stylesheet" href="<?php echo base_url("public/styles/urban.skins.css"); ?>">
+  <script type="text/javascript">
+    const BASE_URL = "<?= base_url(""); ?>";
+  </script>
   <!-- endbuild -->
 </head>
 <body>
@@ -55,10 +58,9 @@
           <div class="col-sm-6" style="margin-top: 10px;">
 
               <div class="input-group mb15">
-
-                  <input type="text" class="form-control" placeholder="Ej : Iphone 6 16GB">
+                  <input id="texboxBusqueda" type="text" class="form-control" placeholder="Ej : Iphone 6 16GB" value="<?= (isset($match))?$match:''; ?>">
                   <span class="input-group-btn">
-                      <button class="btn btn-primary" type="button">Buscar</button>
+                      <button class="btn btn-default" type="button" id="botonBuscar">Buscar</button>
                   </span>
               </div>
             </div>
